@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NavegationDemo.MVVM.Pages.Page2"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Page2">
+
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Entry Text="{Binding Name}" />
+        <Button Clicked="Button_Clicked" Text="Go to Page 3" />
+        <Button Clicked="Button_Clicked_1" Text="Go to Start Page" />
+    </StackLayout>
+
+
+</ContentPage>
