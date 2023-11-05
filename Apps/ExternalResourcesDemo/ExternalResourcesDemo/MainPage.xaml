@@ -5,14 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <StackLayout BackgroundColor="Black">
-        <Image>
-            <Image.Source>
-                <FontImageSource
-                    FontFamily="Icons"
-                    Glyph="&#xF2A4;"
-                    Size="50" />
-            </Image.Source>
+        <Image Source="shoe">    
         </Image>
+        <Image Source="loader"
+               IsAnimationPlaying="True"></Image>
     </StackLayout>
 
 </ContentPage>

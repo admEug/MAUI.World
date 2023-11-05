@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DatabindingDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Models="clr-namespace:DatabindingDemo.Models">
+
+    <ContentPage.Resources>
+        <Models:Person
+            x:Key="person"
+            Name="Peter"
+            Address="Some address"
+            Phone="xxxx" />
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25"
+            VerticalOptions="Center">
+
+            <!--<Label
+                x:Name="txtName"
+                FontSize="50"
+                HorizontalOptions="Center"
+                Text="{Binding Name, Source={StaticResource person}}"
+                VerticalOptions="Center" />-->
+            <Entry
+                FontSize="50"
+                HorizontalOptions="Center"
+                Text="{Binding Name}"
+                VerticalOptions="Center" />
+            <Entry
+                FontSize="50"
+                HorizontalOptions="Center"
+                Text="{Binding Phone}"
+                VerticalOptions="Center" />
+            <Entry
+                FontSize="50"
+                HorizontalOptions="Center"
+                Text="{Binding Address}"
+                VerticalOptions="Center" />
+
+            <Button
+                x:Name="CounterBtn"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Text="Click me" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
