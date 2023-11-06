@@ -1,14 +1,10 @@
 ﻿using NavegationDemo.MVVM.Pages;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NavegationDemo.Utilities
 {
-     public static class NavUtilities
+    public static class NavUtilities
      {
           public static void Examine(INavigation navigation)
           {

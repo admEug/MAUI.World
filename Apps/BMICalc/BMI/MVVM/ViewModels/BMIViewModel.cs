@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BMI.MVVM.ViewModels
+﻿namespace BMI.MVVM.ViewModels
 {
-     public class BMIViewModel
+    public class BMIViewModel
      {
           public Models.BMI BMI { get; set; }
 
