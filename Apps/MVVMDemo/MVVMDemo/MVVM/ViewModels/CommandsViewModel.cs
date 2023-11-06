@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace MVVMDemo.MVVM.ViewModels
 {
-     public class CommandsViewModel
+    public class CommandsViewModel
      {
           public ICommand ClickCommand { get; }
           public ICommand SearchCommand { get; }
@@ -15,20 +10,24 @@ namespace MVVMDemo.MVVM.ViewModels
 
           public CommandsViewModel()
           {
-               ClickCommand = new Command(() =>
-               {
-                    App.Current.MainPage
-                    .DisplayAlert("Title", "message", "Ok");
-               });
-               SearchCommand = new Command((s) =>
-               {
-                    var data = s;
-               });
+            ClickCommand = new Command(Alert);
+            //SearchCommand = new Command((s) =>
+            //   {
+            //       object data = s;
+            //   });
+            SearchCommand = new Command( (s) => OnSearch(s));
           }
 
-          private void Alert()
+        private Action<object> OnSearch(object s)
+        {
+            object data = s;
+            return null;
+        }
+
+        private void Alert()
           {
-               
-          }
+            App.Current.MainPage
+                .DisplayAlert("Title", "message", "Ok");
+          }       
      }
 }

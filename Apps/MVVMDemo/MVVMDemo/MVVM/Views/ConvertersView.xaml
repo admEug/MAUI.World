@@ -10,9 +10,13 @@
         <converters:BoolConverter x:Key="boolConverter"/>
     </ContentPage.Resources>
     
-    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+    <HorizontalStackLayout 
+        HorizontalOptions="Center" 
+        VerticalOptions="Center">
         <CheckBox 
-            IsChecked="{Binding Data.Married, Converter={StaticResource boolConverter}}" />
+            IsChecked=
+            "{Binding Data.Married, 
+            Converter={StaticResource boolConverter}}" />
         <Label Text="Married?" />
     </HorizontalStackLayout>
 </ContentPage>

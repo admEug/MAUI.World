@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace MVVMDemo.MVVM.Converters
 {
-     public class BoolConverter : IValueConverter
+    public class BoolConverter : IValueConverter
      {
-          public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+          public object Convert(object value, 
+              Type targetType, 
+              object parameter, 
+              CultureInfo culture)
           {
                var answer = value.ToString();
                if(answer == "YES")
@@ -19,7 +17,10 @@ namespace MVVMDemo.MVVM.Converters
                return false;
           }
 
-          public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+          public object ConvertBack(object value, 
+              Type targetType, 
+              object parameter, 
+              CultureInfo culture)
           {
                var boolean = (bool)value;
                if(boolean)
