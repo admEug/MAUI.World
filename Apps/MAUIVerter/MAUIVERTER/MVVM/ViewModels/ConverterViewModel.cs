@@ -1,10 +1,5 @@
 ﻿using PropertyChanged;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using UnitsNet;
 
@@ -30,7 +25,7 @@ namespace MAUIVERTER.MVVM.ViewModels
           {
                QuantityName = quantityName;
                FromMeasures = LoadMeasures();
-              ToMeasures = LoadMeasures();
+               ToMeasures = LoadMeasures();
                CurrentFromMeasure = FromMeasures.FirstOrDefault();
                CurrentToMeasure = ToMeasures.Skip(1).FirstOrDefault();
                Convert();
