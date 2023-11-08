@@ -18,9 +18,10 @@
         SelectionMode="Multiple"
         SelectedItems="{Binding SelectedProducts}"
         SelectionChangedCommand="{Binding ProductsChangedCommand}"
-        Grid.Row="1">
+        Grid.Row="1">.
+        <!--glow effect-->
         <CollectionView.Header>
-            <Frame BackgroundColor="{StaticResource Primary}">
+            <Frame BackgroundColor="Red">                
                 <Label
                     FontAttributes="Bold"
                     Text="Products"
@@ -40,15 +41,15 @@
             </HorizontalStackLayout>
         </CollectionView.Footer>
         <CollectionView.ItemsLayout>
-            <LinearItemsLayout Orientation="Vertical" />
+            <LinearItemsLayout Orientation="Vertical"/>
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Frame
-                    Margin="15"
-                    HeightRequest="250"
-                    WidthRequest="200">
-                    <VerticalStackLayout>
+                    <Frame
+                      WidthRequest="200"
+                      HeightRequest="250"
+                      Margin="15" >
+                        <VerticalStackLayout>
                         <Image Source="{Binding Image}" />
                         <Label HorizontalTextAlignment="Center" Text="{Binding Name}" />
                     </VerticalStackLayout>

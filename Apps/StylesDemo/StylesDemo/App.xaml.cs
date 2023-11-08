@@ -6,6 +6,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new StylesView();
+		MainPage = new DynamicStylesView();
 	}
 }

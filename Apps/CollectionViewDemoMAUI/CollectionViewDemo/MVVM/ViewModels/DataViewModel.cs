@@ -1,16 +1,11 @@
 ﻿using CollectionViewDemo.MVVM.Models;
 using PropertyChanged;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace CollectionViewDemo.MVVM.ViewModels
 {
-     [AddINotifyPropertyChangedInterface]
+    [AddINotifyPropertyChangedInterface]
      public class DataViewModel
      {
           private Product selectedProduct;          
@@ -34,10 +29,10 @@ namespace CollectionViewDemo.MVVM.ViewModels
           public ICommand RefreshCommand =>
                new Command(async () =>
                {
-                    IsRefreshing = true;
-                    await Task.Delay(3000);
-                    RefreshItems();
-                    IsRefreshing = false;
+                   IsRefreshing = true;
+                   await Task.Delay(3000);
+                   RefreshItems();
+                   IsRefreshing = false;
                });
 
           public ICommand ThresholdReachedCommand =>
