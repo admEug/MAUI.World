@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace RESTDemo
 {
-     public class MainViewModel
+    public class MainViewModel
      {
           HttpClient client;
           JsonSerializerOptions _serializerOptions;
