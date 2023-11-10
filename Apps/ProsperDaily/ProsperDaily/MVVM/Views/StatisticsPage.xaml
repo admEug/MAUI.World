@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProsperDaily.MVVM.Views.StatisticsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+    xmlns:converters="clr-namespace:ProsperDaily.Converters"
+    Title="StatisticsPage">
+
+    <ContentPage.Resources>
+        <converters:AmountToCurrencyConverter x:Key="AmountConverter" />
+        <converters:AmountToColorConverter x:Key="ColorConverter" />
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions=".15*, .15*, .30*, .40*">
+        <RoundRectangle Grid.RowSpan="2" StyleClass="TopRectangle" />
+        <VerticalStackLayout StyleClass="Header">
+            <Label StyleClass="HeaderSubTitle" Text="Statistics" />
+        </VerticalStackLayout>
+
+        <Grid
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            StyleClass="BalanceGrid">
+            <RoundRectangle StyleClass="BalanceRectangle" />
+
+            <chart:SfCartesianChart Margin="5,5,20,5">
+                <chart:SfCartesianChart.XAxes>
+                    <chart:CategoryAxis />
+                </chart:SfCartesianChart.XAxes>
+
+                <chart:SfCartesianChart.YAxes>
+                    <chart:NumericalAxis />
+                </chart:SfCartesianChart.YAxes>
+
+                <chart:SplineSeries
+                    ItemsSource="{Binding Summary}"
+                    XBindingPath="ShownDate"
+                    YBindingPath="TransactionsTotal" />
+            </chart:SfCartesianChart>
+
+
+
+        </Grid>
+
+        <Grid
+            Grid.Row="3"
+            RowDefinitions=".1*,.9*"
+            StyleClass="Margin15">
+            <Label Text="Top Spending" />
+            <CollectionView
+                Grid.Row="1"
+                EmptyView="No Data"
+                ItemsSource="{Binding SpendingList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="15" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label StyleClass="NoDataText" Text="No data found, click on the + button to add a new transaction" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+                            <Label StyleClass="StrongMediumTitle" Text="{Binding Name}" />
+                            <Label
+                                Grid.Row="1"
+                                StyleClass="SmallFont"
+                                Text="{Binding HumanDate}" />
+
+                            <Label
+                                x:Name="lblIsIncome"
+                                IsVisible="False"
+                                Text="{Binding IsIncome}" />
+
+                            <Label
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                StyleClass="ListAmount"
+                                Text="{Binding Amount, Converter={StaticResource AmountConverter}, ConverterParameter={x:Reference lblIsIncome}}"
+                                TextColor="{Binding Amount, Converter={StaticResource ColorConverter}, ConverterParameter={x:Reference lblIsIncome}}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

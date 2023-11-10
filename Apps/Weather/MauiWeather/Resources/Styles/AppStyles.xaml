@@ -36,7 +36,6 @@
         <Setter Property="HeightRequest" Value="150" />
         <Setter Property="WidthRequest" Value="150" />
         <Setter Property="Opacity" Value=".1" />
-
     </Style>
 
 </ResourceDictionary>

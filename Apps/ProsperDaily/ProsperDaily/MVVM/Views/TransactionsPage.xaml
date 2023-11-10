@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProsperDaily.MVVM.Views.TransactionsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="TransactionsPage"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions=".15*,.15*,.70*">
+        <RoundRectangle Grid.RowSpan="2" StyleClass="TopRectangle" />
+        <VerticalStackLayout StyleClass="Header">
+            <Label StyleClass="HeaderSubTitle" Text="Add Transaction" />
+        </VerticalStackLayout>
+
+        <Grid
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            StyleClass="BalanceGrid">
+            <RoundRectangle StyleClass="BalanceRectangle" />
+
+            <VerticalStackLayout Spacing="10" StyleClass="Padding25">
+                <Label Text="Transaction Name" />
+                <Frame StyleClass="FrameBorder">
+                    <Entry Text="{Binding Transaction.Name}" />
+                </Frame>
+                <Label StyleClass="MarginT15" Text="Amount" />
+                <Frame StyleClass="FrameBorder">
+                    <Entry
+                        Keyboard="Numeric"
+                        Text="{Binding Transaction.Amount}"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Label StyleClass="MarginT15" Text="Transaction Date" />
+                <Frame StyleClass="FrameBorder">
+                    <DatePicker Date="{Binding Transaction.OperationDate}" />
+                </Frame>
+                <HorizontalStackLayout>
+                    <CheckBox IsChecked="{Binding Transaction.IsIncome}" />
+                    <Label Text="Is Income?" />
+                </HorizontalStackLayout>
+
+                <Button
+                    x:Name="Save"
+                    Clicked="Save_Clicked"
+                    StyleClass="MarginT15"
+                    Text="Save" />
+                <Button
+                    x:Name="Cancel"
+                    Clicked="Cancel_Clicked"
+                    StyleClass="MarginT15, RedControl"
+                    Text="Cancel" />
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

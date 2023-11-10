@@ -7,7 +7,6 @@
     xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
     Title="WeatherView">
 
-
     <ContentPage.Resources>
         <converters:CodeToWeatherConverter x:Key="CodeToWeatherConverter" />
         <converters:CodeToLottieConverter x:Key="CodeToLottieConverter" />
@@ -91,6 +90,5 @@
         </Grid>
 
     </Grid>
-
 
 </ContentPage>
