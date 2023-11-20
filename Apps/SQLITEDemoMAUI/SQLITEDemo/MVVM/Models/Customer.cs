@@ -1,18 +1,12 @@
 ﻿using SQLite;
 using SQLITEDemo.Abstractions;
 using SQLiteNetExtensions.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SQLITEDemo.MVVM.Models
 {
-     [Table("Customers")]
+	[Table("Customers")]
      public class Customer : TableData
      {
-
           [Column("name"), Indexed, NotNull]
           public string Name { get; set; }
           [Unique]
@@ -23,9 +17,37 @@ namespace SQLITEDemo.MVVM.Models
           [Ignore]
           public bool IsYoung =>
                Age > 50 ? true : false;
-         
 
-          [ManyToMany(typeof(Passport), CascadeOperations = CascadeOperation.All)]
-          public List<Passport> Passport { get; set; }
-     }
+		#region 1 to 1
+
+		//[ForeignKey(typeof(Passport))]
+		//public int PassportId { get; set; }
+
+		//[OneToOne(CascadeOperations = CascadeOperation.All)]
+		//public Passport Passport { get; set; }
+
+		#endregion
+
+		#region 1 - n -->>> One Customer with Many Passaports
+
+		//[ForeignKey(typeof(Passport))]
+		//public int PassportId { get; set; }
+
+		//[OneToMany(CascadeOperations = CascadeOperation.All)]
+		//public List<Passport> Passport { get; set; }
+
+		#endregion
+
+		#region n - n -->>>
+
+		//[ManyToMany(typeof(Passport), CascadeOperations = CascadeOperation.All)]
+		//public List<Passport> Passport { get; set; }
+
+		[ManyToMany(typeof(CustomerPassport), CascadeOperations = CascadeOperation.All)]
+		public List<Passport> Passports { get; set; }
+
+		#endregion
+
+
+	}
 }

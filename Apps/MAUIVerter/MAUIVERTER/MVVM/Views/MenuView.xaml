@@ -13,7 +13,6 @@
         <Color x:Key="TextColor">White</Color>
     </ContentPage.Resources>
 
-
     <Grid
         ColumnDefinitions=".33*, .33*, .33*"
         RowDefinitions=".1*,.3*,.3*,.3*">
