@@ -19,33 +19,24 @@ namespace SQLITEDemo.MVVM.Models
                Age > 50 ? true : false;
 
 		#region 1 to 1
+			//[ForeignKey(typeof(Passport))]
+			//public int PassportId { get; set; }
 
-		//[ForeignKey(typeof(Passport))]
-		//public int PassportId { get; set; }
-
-		//[OneToOne(CascadeOperations = CascadeOperation.All)]
-		//public Passport Passport { get; set; }
-
+			//[OneToOne(CascadeOperations = CascadeOperation.All)]
+			//public Passport Passport { get; set; }
 		#endregion
 
 		#region 1 - n -->>> One Customer with Many Passaports
+			//[ForeignKey(typeof(Passport))]
+			//public int PassportId { get; set; }
 
-		//[ForeignKey(typeof(Passport))]
-		//public int PassportId { get; set; }
-
-		//[OneToMany(CascadeOperations = CascadeOperation.All)]
-		//public List<Passport> Passport { get; set; }
-
+			//[OneToMany(CascadeOperations = CascadeOperation.All)]
+			//public List<Passport> Passport { get; set; }
 		#endregion
 
 		#region n - n -->>>
-
-		//[ManyToMany(typeof(Passport), CascadeOperations = CascadeOperation.All)]
-		//public List<Passport> Passport { get; set; }
-
-		[ManyToMany(typeof(CustomerPassport), CascadeOperations = CascadeOperation.All)]
-		public List<Passport> Passports { get; set; }
-
+			[ManyToMany(typeof(CustomerPassport), CascadeOperations = CascadeOperation.All)]
+			public List<Passport> Passports { get; set; }
 		#endregion
 
 

@@ -1,7 +1,6 @@
 ﻿using Bogus;
 using PropertyChanged;
 using SQLITEDemo.MVVM.Models;
-using System.Collections.Generic;
 using System.Windows.Input;
 
 namespace SQLITEDemo.MVVM.ViewModels
@@ -45,47 +44,42 @@ namespace SQLITEDemo.MVVM.ViewModels
                  .Generate();
 
 			#region 1 to 1
-
-			//         CurrentCustomer.Passport = new Passport()
-			//         {
-			//             ExpirationDate =  DateTime.Now.AddDays(30),				
-			//};
+			    // CurrentCustomer.Passport = new Passport()
+			    // {
+			    //   ExpirationDate =  DateTime.Now.AddDays(30),				
+			    // };
 			#endregion
 
 			#region 1 to Many, Many to Many
-
-			//CurrentCustomer.Passport = new List<Passport>
-			//   	   {
-			//   			new Passport
-			//			{
-			//				 ExpirationDate =
-			//					  DateTime.Now.AddDays(30)
-			//   			},
-			//   			new Passport
-			//			{
-			//				 ExpirationDate =
-			//					  DateTime.Now.AddDays(15)
-			//   			},
-			//   	   };		  
-
+			    //CurrentCustomer.Passport = new List<Passport>
+			    //   	   {
+			    //   			new Passport
+			    //			{
+			    //				 ExpirationDate =
+			    //					  DateTime.Now.AddDays(30)
+			    //   			},
+			    //   			new Passport
+			    //			{
+			    //				 ExpirationDate =
+			    //					  DateTime.Now.AddDays(15)
+			    //   			},
+			    //   	   };
 			#endregion
 
 			#region  n - n -->>>
-
-			CurrentCustomer.Passports = new List<Passport>
-			{
-					new Passport
-					{
-						 ExpirationDate =
-							  DateTime.Now.AddDays(30)
-					},
-					new Passport
-					{
-						 ExpirationDate =
-							  DateTime.Now.AddDays(15)
-					},
-			};
-
+			    CurrentCustomer.Passports = new List<Passport>
+			    {
+					    new Passport
+					    {
+						     ExpirationDate =
+							      DateTime.Now.AddDays(30)
+					    },
+					    new Passport
+					    {
+						     ExpirationDate =
+							      DateTime.Now.AddDays(15)
+					    },
+			    };
 			#endregion
 		}
 		private void Refresh()
