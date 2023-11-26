@@ -1,15 +1,10 @@
 ﻿using PropertyChanged;
 using ProsperDaily.MVVM.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProsperDaily.MVVM.ViewModels
 {
-     [AddINotifyPropertyChangedInterface]
+	[AddINotifyPropertyChangedInterface]
      public class DashboardViewModel
      {
           public ObservableCollection<Transaction> Transactions { get; set; }
@@ -25,12 +20,11 @@ namespace ProsperDaily.MVVM.ViewModels
 
           public void FillData()
           {
-               var transactions =
+			   List<Transaction> transactions =
                     App.TransactionsRepo.GetItems();
                transactions = 
                     transactions.OrderByDescending(x => x.OperationDate).ToList();
                Transactions = new ObservableCollection<Transaction>(transactions);
-
 
                Balance = 0;
                Income = 0;

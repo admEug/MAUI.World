@@ -1,15 +1,10 @@
 ﻿using PropertyChanged;
 using ProsperDaily.MVVM.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProsperDaily.MVVM.ViewModels
 {
-     [AddINotifyPropertyChangedInterface]
+	[AddINotifyPropertyChangedInterface]
      public class StatisticsViewModel
      {
           public ObservableCollection<TransactionsSummary> Summary { get; set; }
@@ -21,7 +16,7 @@ namespace ProsperDaily.MVVM.ViewModels
                     App.TransactionsRepo.GetItems();
                var result =
                     new List<TransactionsSummary>();
-               var groupedTransactions =
+			   IEnumerable<IGrouping<DateTime, Transaction>> groupedTransactions =
                     data.GroupBy(t => t.OperationDate.Date);
 
                foreach(var group in groupedTransactions)

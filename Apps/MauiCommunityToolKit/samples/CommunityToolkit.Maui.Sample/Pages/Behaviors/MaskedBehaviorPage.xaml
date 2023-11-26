@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
+    x:Class="CommunityToolkit.Maui.Sample.Pages.Behaviors.MaskedBehaviorPage"
+    xmlns:vm="clr-namespace:CommunityToolkit.Maui.Sample.ViewModels.Behaviors"
+    x:TypeArguments="vm:MaskedBehaviorViewModel"
+    x:DataType="vm:MaskedBehaviorViewModel">
+    <ScrollView>
+        <VerticalStackLayout Padding="{StaticResource ContentPadding}" Spacing="5">
+
+            <Label Text="The MaskedBehavior is a behavior that allows the user to define an input mask for data entry. Adding this behavior to an InputView (i.e. Entry) control will force the user to only input values matching a given mask. Examples of its usage include input of a credit card number or a phone number." TextColor="{StaticResource NormalLabelTextColor}" />
+
+            <Entry Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <mct:MaskedBehavior Mask="XX-XX-XX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Padding="10,0,10,50" FontSize="Small" Text="e.g. Sort code 'XX-XX-XX'" />
+
+            <Entry Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <mct:MaskedBehavior Mask="AA-AA-AA" UnmaskedCharacter="A" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Padding="10,0,10,50" FontSize="Small" Text="e.g. Sort code 'AA-AA-AA'" />
+
+            <Entry Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <mct:MaskedBehavior Mask="XXXX XXXX XXXX XXXX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Padding="10,0,10,50" FontSize="Small">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="e.g. Credit Card Number 'XXXX XXXX XXXX XXXX'" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <Entry Keyboard="Numeric" Placeholder="dd/mm/yyyy">
+                <Entry.Behaviors>
+                    <mct:MaskedBehavior Mask="XX/XX/XXXX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Padding="10,0,10,50" FontSize="Small" Text="e.g. Date 'XX/XX/XXXX'" />
+
+            <Entry Keyboard="Numeric" Placeholder="hh:mm">
+                <Entry.Behaviors>
+                    <mct:MaskedBehavior Mask="XX:XX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Padding="10,0,10,50" FontSize="Small">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="e.g. Time 'XX:XX'" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <Entry Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <mct:MaskedBehavior Mask="XXX-XX-XXXX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Padding="10,0,10,50" FontSize="Small" Text="e.g. Social Security Number 'XXX-XX-XXXX'" />
+
+            <Entry Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <mct:MaskedBehavior Mask="(XXX) XXX-XXXX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Padding="10,0,10,50" FontSize="Small" Text="e.g. Phone Number '(XXX) XXX-XXXX'" />
+        </VerticalStackLayout>
+    </ScrollView>
+</pages:BasePage>

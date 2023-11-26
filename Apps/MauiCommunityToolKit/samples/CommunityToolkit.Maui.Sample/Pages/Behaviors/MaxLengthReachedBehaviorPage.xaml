@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
+    xmlns:vm="clr-namespace:CommunityToolkit.Maui.Sample.ViewModels.Behaviors"
+    x:Class="CommunityToolkit.Maui.Sample.Pages.Behaviors.MaxLengthReachedBehaviorPage"
+    x:DataType="vm:MaxLengthReachedBehaviorViewModel"
+    x:TypeArguments="vm:MaxLengthReachedBehaviorViewModel">
+
+    <pages:BasePage.Content>
+        <ScrollView>
+            <VerticalStackLayout Spacing="20">
+
+                <Label Text="The MaxLengthReachedBehavior is a behavior that allows the user to trigger an action when a user has reached the maximum length allowed on an InputView. It can either trigger a ICommand or an event depending on the user's preferred scenario."
+                       TextColor="{StaticResource NormalLabelTextColor}" />
+
+                <Label Text="When the MaxLength on an Entry field has been reached, any configured EventHandler gets invoked and a Command gets Executed."
+                       Margin="{StaticResource ContentPadding}" />
+
+                <!-- Settings -->
+                <Frame Margin="{StaticResource ContentPadding}"
+                       CornerRadius="10">
+                    <Grid RowDefinitions="*,*" ColumnDefinitions="2*, *" RowSpacing="24" ColumnSpacing="8">
+                        <Label Text="MaxLength setting on Entry field"
+                               HorizontalOptions="End"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center" />
+                        <Entry x:Name="MaxLengthSetting"
+                               Text="6"
+                               HorizontalOptions="StartAndExpand"
+                               Keyboard="Numeric"
+                               Grid.Column="1" />
+
+                        <Label Text="Should dismiss keyboard automatically"
+                               VerticalTextAlignment="Center"
+                               HorizontalOptions="End"
+                               HorizontalTextAlignment="Start"
+                               Grid.Row="1" />
+                        <Switch x:Name="AutoDismissKeyboardSetting"
+                                HorizontalOptions="Start"
+                                Grid.Row="1"
+                                Grid.Column="1" />
+                    </Grid>
+                </Frame>
+
+                <!-- First Scenario -->
+                <Label Text="When the MaxLength of the first Entry has been reached, the focus will be set to the next Entry field."
+                       Margin="{StaticResource ContentPadding}" />
+
+                <Entry Placeholder="Start typing until MaxLength is reached..."
+                       MaxLength="{Binding Path=Text, Source={x:Reference MaxLengthSetting}}"
+                       Margin="{StaticResource ContentPadding}">
+                    <Entry.Behaviors>
+                        <mct:MaxLengthReachedBehavior 
+                            MaxLengthReached="MaxLengthReachedBehavior_MaxLengthReached"
+                            ShouldDismissKeyboardAutomatically="{Binding Path=IsToggled, Source={x:Reference AutoDismissKeyboardSetting}}" />
+                    </Entry.Behaviors>
+                </Entry>
+
+                <Entry x:Name="NextEntry"
+                       Placeholder="This Entry will then get focus..."
+                       Margin="{StaticResource ContentPadding}" />
+
+
+                <!-- Second Scenario -->
+                <Label Text="When the MaxLength of this Entry is reached, a Command is executed. Below are all Command executions shown."
+                       Margin="{StaticResource ContentPadding}" />
+
+                <Entry Placeholder="Start typing until MaxLength is reached..."
+                       MaxLength="{Binding Path=Text, Source={x:Reference MaxLengthSetting}}"
+                       Margin="{StaticResource ContentPadding}">
+                    <Entry.Behaviors>
+                        <mct:MaxLengthReachedBehavior 
+                            Command="{Binding MaxLengthReachedCommand}"
+                            ShouldDismissKeyboardAutomatically="{Binding Path=IsToggled, Source={x:Reference AutoDismissKeyboardSetting}}" />
+                    </Entry.Behaviors>
+                </Entry>
+
+                <Label Text="{Binding CommandExecutionText}" Margin="{StaticResource ContentPadding}" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </pages:BasePage.Content>
+</pages:BasePage>

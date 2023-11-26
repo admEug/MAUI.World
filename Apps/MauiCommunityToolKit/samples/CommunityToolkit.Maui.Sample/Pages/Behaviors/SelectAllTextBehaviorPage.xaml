@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+	x:Class="CommunityToolkit.Maui.Sample.Pages.Behaviors.SelectAllTextBehaviorPage"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
+	xmlns:vm="clr-namespace:CommunityToolkit.Maui.Sample.ViewModels.Behaviors"
+	Title="SelectAllTextBehaviorPage"
+	x:DataType="vm:SelectAllTextBehaviorViewModel"
+	x:TypeArguments="vm:SelectAllTextBehaviorViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout
+			Padding="10,10"
+			HorizontalOptions="Fill"
+			Spacing="20"
+			VerticalOptions="Fill">
+
+            <Label Text="The SelectAllTextBehavior is an effect that will select all text in an Entry / Editor when it becomes focused. Useful applications for this effect would be custom url address bars, a copy paste button etc." />
+
+            <Label FontAttributes="Bold" Text="Entry without the Behavior"/>
+            <Label FontAttributes="Italic" Text="When focused no text will be selected" />
+            <Border BackgroundColor="{StaticResource SoftBorderBackgroundColor}" >
+                <Entry
+					BackgroundColor="{StaticResource PrimaryColor}"
+					PlaceholderColor="{StaticResource DarkLabelPlaceholderColor}"
+					Text="https://github.com/CommunityToolkit/Maui/"
+					TextColor="{StaticResource DarkLabelTextColor}" />
+            </Border>
+            
+            <Label FontAttributes="Bold" Text="Entry with the Behavior"/>
+            <Label FontAttributes="Italic" Text="When focused all text will be selected" />
+            <Border BackgroundColor="{StaticResource SoftBorderBackgroundColor}" >
+                <Entry
+					BackgroundColor="{StaticResource PrimaryColor}"
+					PlaceholderColor="{StaticResource DarkLabelPlaceholderColor}"
+					Text="https://github.com/CommunityToolkit/Maui/"
+					TextColor="{StaticResource DarkLabelTextColor}">
+                    <Entry.Behaviors>
+                        <mct:SelectAllTextBehavior />
+                    </Entry.Behaviors>
+                </Entry>
+            </Border>
+
+            <Label FontAttributes="Bold" Text="Editor without the Behavior" />
+            <Label FontAttributes="Italic" Text="When focused no text will be selected" />
+            <Border BackgroundColor="{StaticResource SoftBorderBackgroundColor}" >
+                <Editor PlaceholderColor="{StaticResource DarkLabelPlaceholderColor}"
+						TextColor="{StaticResource DarkLabelTextColor}"
+						BackgroundColor="{StaticResource PrimaryColor}">
+                    <Editor.Text>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </Editor.Text>
+                </Editor>
+            </Border>
+
+            <Label FontAttributes="Bold" Text="Editor with the Behavior" />
+            <Label FontAttributes="Italic" Text="When focused all text will be selected" />
+            <Border BackgroundColor="{StaticResource SoftBorderBackgroundColor}" >
+                <Editor PlaceholderColor="{StaticResource DarkLabelPlaceholderColor}"
+						TextColor="{StaticResource DarkLabelTextColor}"
+						BackgroundColor="{StaticResource PrimaryColor}">
+                    <Editor.Behaviors>
+                        <mct:SelectAllTextBehavior />
+                    </Editor.Behaviors>
+                    <Editor.Text>
+                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </Editor.Text>
+                </Editor>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</pages:BasePage>

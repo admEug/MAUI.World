@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:pages="clr-namespace:CommunityToolkit.Maui.Sample.Pages"
+    xmlns:vm="clr-namespace:CommunityToolkit.Maui.Sample.ViewModels.Converters"
+    x:Class="CommunityToolkit.Maui.Sample.Pages.Converters.DoubleToIntConverterPage"
+    x:DataType="vm:DoubleToIntConverterViewModel"
+    x:TypeArguments="vm:DoubleToIntConverterViewModel">
+    <pages:BasePage.Resources>
+        <ResourceDictionary>
+            <mct:DoubleToIntConverter x:Key="DoubleToIntConverter" />
+        </ResourceDictionary>
+    </pages:BasePage.Resources>
+    <pages:BasePage.Content>
+        <VerticalStackLayout
+            Padding="10,10"
+            HorizontalOptions="Fill"
+            Spacing="10"
+            VerticalOptions="Fill">
+            <Label Text="The DoubleToIntConverter is a converter that allows users to convert an incoming double value to an int. Optionally the user can provide a multiplier to the conversion through the Ratio property." TextColor="{StaticResource NormalLabelTextColor}" />
+            <Label Text="Please enter a decimal Number" TextColor="{StaticResource NormalLabelTextColor}" />
+            <Entry
+                x:Name="ExampleText"
+                Placeholder="Example 2.3"
+                Text="{Binding Input}"
+                TextColor="{StaticResource NormalLabelTextColor}" />
+            <Label
+                Padding="7,0,0,0"
+                Text="{Binding Path=Input, Converter={StaticResource DoubleToIntConverter}, ConverterParameter=1}"
+                TextColor="{StaticResource NormalLabelTextColor}" />
+        </VerticalStackLayout>
+    </pages:BasePage.Content>
+</pages:BasePage>
