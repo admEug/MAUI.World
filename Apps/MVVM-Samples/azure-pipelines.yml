@@ -1,0 +1,46 @@
+trigger:
+- master
+
+pr:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solutionUwp: 'samples/MvvmSampleUwp.sln'
+  solutionXf: 'samples/MvvmSampleUwp.sln'
+  buildPlatform: 'x86|x64|ARM|ARM64'
+  buildConfiguration: 'Release'
+  appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
+
+steps:
+- task: NuGetToolInstaller@1
+  displayName: Install NuGet tool
+
+- task: CmdLine@2
+  inputs:
+    script: 'git submodule update --init --recursive' 
+
+- task: NuGetCommand@2
+  displayName: Restore solution(s)
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'config'
+    nugetConfigPath: ./samples/nuget.config
+
+- task: VSBuild@1
+  displayName: Build UWP solution
+  inputs:
+    platform: 'x86'
+    solution: '$(solutionUwp)'
+    configuration: '$(buildConfiguration)'
+    msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
+
+- task: VSBuild@1
+  displayName: Build Xamarin.Forms solution
+  inputs:
+    platform: 'Any CPU'
+    solution: '$(solutionXf)'
+    configuration: '$(buildConfiguration)'
