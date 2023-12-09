@@ -1,4 +1,4 @@
-﻿using DalluiApp_EUE_Screen1.Views;
+﻿using DaluiApp.Views;
 
 namespace DalluiApp_EUE_Screen1
 {
@@ -8,7 +8,7 @@ namespace DalluiApp_EUE_Screen1
         {
             InitializeComponent();
 
-            MainPage = new DashboardView();
+            MainPage = new ImageGeneratorView();
         }
     }
 }

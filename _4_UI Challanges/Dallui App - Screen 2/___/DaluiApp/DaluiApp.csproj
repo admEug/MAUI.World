@@ -5,26 +5,18 @@
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
-
-		<!-- Note for MacCatalyst:
-		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
-		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
-		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
-		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
-		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
-
 		<OutputType>Exe</OutputType>
-		<RootNamespace>DalluiApp_EUE_Screen1</RootNamespace>
+		<RootNamespace>DaluiApp</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>DalluiApp_EUE_Screen1</ApplicationTitle>
+		<ApplicationTitle>DaluiApp</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.dalluiapp_eue_screen1</ApplicationId>
+		<ApplicationId>com.companyname.daluiapp</ApplicationId>
+		<ApplicationIdGuid>8aaf3d38-5639-4780-b301-d0d06a86646b</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -47,7 +39,7 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -57,11 +49,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CardsView.Maui" Version="0.0.5" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	  <None Remove="Resources\Fonts\Nexa-ExtraLight.ttf" />
+	  <None Remove="Resources\Fonts\Nexa-Heavy.ttf" />
+	  <None Remove="Resources\Images\anime.jpg" />
+	  <None Remove="Resources\Images\cartoon.jpg" />
+	  <None Remove="Resources\Images\dashboard1.jpg" />
+	  <None Remove="Resources\Images\dashboard2.jpg" />
+	  <None Remove="Resources\Images\dashboard3.jpg" />
+	  <None Remove="Resources\Images\funko.jpg" />
+	  <None Remove="Resources\Images\isometric.jpg" />
+	  <None Remove="Resources\Images\menu.png" />
+	  <None Remove="Resources\Images\minimalism.jpg" />
+	  <None Remove="Resources\Images\popart.jpg" />
+	  <None Remove="Resources\Images\profile1.jpg" />
+	  <None Remove="Resources\Images\profile2.jpg" />
+	  <None Remove="Resources\Images\profile3.jpg" />
+	  <None Remove="Resources\Images\profilesquare.jpg" />
+	  <None Remove="Resources\Images\realistic.jpg" />
+	  <None Remove="Resources\Images\storybook.jpg" />
+	  <None Remove="Resources\Images\surrealism.jpg" />
+	  <None Remove="Resources\Images\watercolor.jpg" />
+	  <None Remove="Resources\Raw\robot.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AcrylicView.Maui" Version="1.12.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.61" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -71,9 +86,24 @@
 	  <MauiXaml Update="Views\GenerationOptionsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ImageGeneratorView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+	  <PackageReference Include="CardsView.Maui">
+	    <Version>0.0.2</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
+	  <PackageReference Include="CardsView.Maui">
+	    <Version>0.0.2</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-maccatalyst'">
+	  <PackageReference Include="CardsView.Maui">
+	    <Version>0.0.2</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 </Project>
